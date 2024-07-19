@@ -1,4 +1,5 @@
 using BasicShop.Core.Domain.Entities;
+using BasicShop.Core.Domain.RepositoryInterfaces;
 using BasicShop.Infrastructure.SeedData;
 using BasicShop.Presentation.API;
 using BasicShop.Presentation.API.ServicesRegestration;
@@ -7,14 +8,15 @@ using Microsoft.AspNetCore.Identity;
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.RegisterServices(builder.Configuration);
 var app = builder.Build();
-using (var scope = app.Services.CreateScope())
-{
-    var services = scope.ServiceProvider;
-    var userManager = services.GetRequiredService<UserManager<User>>();
+//using (var scope = app.Services.CreateScope())
+//{
+//    var services = scope.ServiceProvider;
+//    var userManager = services.GetRequiredService<UserManager<User>>();
+//    var cartRepository = services.GetRequiredService<IGenericRepository<Cart>>();
+//    var unitOfWork = services.GetRequiredService<IUnitOfWork>();
 
-    // Call the seed method
-    await SeedAdminData.Initialize(userManager);
-}
+//    await SeedAdminData.Initialize(userManager,cartRepository,unitOfWork);
+//}
 app.UseGlobalExceptionMiddleware();
 app.UseHsts();
 app.UseHttpsRedirection();

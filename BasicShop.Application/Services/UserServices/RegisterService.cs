@@ -12,18 +12,21 @@ namespace BasicShop.Application.Services.UserServices
     public class RegisterService : IRegisterService
     {
         private UserManager<User> _userManager;
-        private SignInManager<User> _signInManager;
         private IMapper _mapper;
-        private ISignInService _signInService;  
+        private ISignInService _signInService;
+        private IGenericRepository<Cart> _cartRepository;
+        private IUnitOfWork _unitOfWork;
 
 
-        public RegisterService(UserManager<User> userManager,IMapper mapper
-            , SignInManager<User>signInManager,ISignInService signInService)
+        public RegisterService(UserManager<User> userManager,IMapper mapper,
+            ISignInService signInService, IGenericRepository<Cart> cartRepository
+            , IUnitOfWork unitOfWork)
         {
-            _mapper=mapper;
-            _signInManager=signInManager;
-            _signInService=signInService;
+            _mapper = mapper;
+            _signInService = signInService;
             _userManager = userManager;
+            _cartRepository = cartRepository;
+            _unitOfWork = unitOfWork;
         }
 
         public async Task<ResponseModel<RegisterResponseDto>> perform(RegisterRequestDto requestDto)
@@ -39,6 +42,19 @@ namespace BasicShop.Application.Services.UserServices
             }
             else
             {
+                //add cart for user
+                Cart cart = new Cart()
+                {
+                    Id = Guid.NewGuid(),
+                    TotalPrice = 0,
+                    UserId = user.Id
+                };
+                await _cartRepository.AddAsync(cart);
+                await _unitOfWork.SaveChangeAsync();
+
+
+
+                //sign the user in
                 SignInRequestDto signInRequestDto = new SignInRequestDto()
                 {
                     Email = requestDto.Email,
