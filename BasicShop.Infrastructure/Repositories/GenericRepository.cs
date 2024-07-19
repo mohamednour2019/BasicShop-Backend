@@ -4,6 +4,8 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -28,14 +30,24 @@ namespace BasicShop.Infrastructure.Repositories
             _entity.Remove(entity);
         }
 
-        public async Task<IEnumerable<T>> GetAllAsync()
+        public async Task<List<T>> GetAllAsync()
         {
             return await _entity.ToListAsync();
+        }
+
+        public async Task<List<T>> GetAllWithConditionAsync(Expression<Func<T, bool>> predicate)
+        {
+           return await _entity.Where(predicate).ToListAsync();
         }
 
         public async Task<T> GetByIdAsync(Guid id)
         {
             return await _entity.FindAsync(id);
+        }
+
+        public async Task<bool> IsResident(Expression<Func<T, bool>> predicate)
+        {
+            return await _entity.AnyAsync(predicate);
         }
 
         public void Update(T entity)

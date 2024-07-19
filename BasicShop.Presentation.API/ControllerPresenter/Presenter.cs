@@ -16,7 +16,7 @@ namespace BasicShop.Presentation.API.ControllerPresenter
                 ContentType = "appliction/json"
             };
         }
-        public async Task<IActionResult> Handle<TRequestDto, TResponseDto>(TRequestDto requestDto, IGenericService<TRequestDto, TResponseDto> service)
+        public async Task<IActionResult> Handle<TRequestDto, TResponseDto>(TRequestDto? requestDto, IGenericService<TRequestDto, TResponseDto> service)
         {
             TResponseDto response = await service.perform(requestDto);
             contentResult.Content = JsonSerializer.Serialize(response);

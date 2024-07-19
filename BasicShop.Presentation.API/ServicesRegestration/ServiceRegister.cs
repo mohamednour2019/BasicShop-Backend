@@ -10,6 +10,8 @@ using BasicShop.Core.ServiceInterfaces.UserServicesInterfaces;
 using BasicShop.Application.Services.UserServices;
 using BasicShop.Core.Domain.RepositoryInterfaces;
 using BasicShop.Infrastructure.Repositories;
+using BasicShop.Core.ServiceInterfaces.ProductInterfaces;
+using BasicShop.Application.Services.ProductServices;
 
 namespace BasicShop.Presentation.API.ServicesRegestration
 {
@@ -66,6 +68,12 @@ namespace BasicShop.Presentation.API.ServicesRegestration
             services.AddScoped<ISignInService, SignInService>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+            services.AddScoped<IAddProductService, AddProductService>();
+            services.AddScoped<IDeleteProductService, DeleteProductService>();  
+            services.AddScoped<IGetActiveProductsService, GetActiveProductsService>();
+            services.AddScoped<IGetProductsService, GetProductsService>();
+            services.AddScoped<IToggleProductStatusService, ToggleProductStatusService>();
+            services.AddScoped<IChangeProductQuantityService, ChangeProductQuantityService>();
             return services;
         }
 

@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
 using BasicShop.Core.Domain.Entities;
+using BasicShop.Core.DTO_S.Product.RequestDTOs;
+using BasicShop.Core.DTO_S.Product.ResponseDTOs;
 using BasicShop.Core.DTO_S.User.RequestDTOs;
 using BasicShop.Core.DTO_S.User.ResponseDTOs;
 using System;
@@ -34,6 +36,19 @@ namespace BasicShop.Infrastructure.Mapper
             .ForMember(dest => dest.FirstName, opt => opt.MapFrom(src => src.FirstName))
             .ForMember(dest => dest.LastName, opt => opt.MapFrom(src => src.LastName))
             .ForMember(dest => dest.UserId, opt => opt.MapFrom(src => src.UserId));
+
+            CreateMap<AddProductRequestDto,Product>()
+            .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
+            .ForMember(dest => dest.QuantityInStock, opt => opt.MapFrom(src => src.QuantityInStock))
+            .ForMember(dest => dest.Price, opt => opt.MapFrom(src => src.Price));
+
+            CreateMap<Product, ProductResponseDto>()
+            .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
+            .ForMember(dest => dest.QuantityInStock, opt => opt.MapFrom(src => src.QuantityInStock))
+            .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
+            .ForMember(dest => dest.IsActive, opt => opt.MapFrom(src => src.IsActive))
+            .ForMember(dest => dest.Price, opt => opt.MapFrom(src => src.Price));
+
 
         }
     }
