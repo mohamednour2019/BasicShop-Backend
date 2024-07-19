@@ -11,5 +11,7 @@ namespace BasicShop.Core.Domain.RepositoryInterfaces
     {
         Task<CartProduct> GetCartProduct(Guid CartId, Guid ProductId);
         Task<List<CartProduct>> GetCartProducts(Guid CartId);
+
+        Task UpdatePrice(Guid ProductId, decimal newPrice, decimal priceDifference);
     }
 }

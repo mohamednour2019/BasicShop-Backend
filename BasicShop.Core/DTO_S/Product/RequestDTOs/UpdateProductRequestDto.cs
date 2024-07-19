@@ -7,10 +7,14 @@ using System.Threading.Tasks;
 
 namespace BasicShop.Core.DTO_S.Product.RequestDTOs
 {
-    public class ChangeProductQuantityRequestDto
+    public class UpdateProductRequestDto
     {
         [Required(ErrorMessage ="Product Id is Required")]
         public Guid ProductId {  get; set; }
+
+
+        public decimal Price {  get; set; }
+
 
         [Required(ErrorMessage = "Quantity is Required")]
         [Range(0, double.MaxValue, ErrorMessage = "Quantity should be between {0} and {1}.")]

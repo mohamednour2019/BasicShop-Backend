@@ -45,10 +45,10 @@ namespace BasicShop.Presentation.API.Controllers
 
 
 
-        [HttpPatch("quantity")]
+        [HttpPatch("update")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ResponseModel<ProductResponseDto>))]
-        public async Task<IActionResult> changeQuantity(ChangeProductQuantityRequestDto requestDto
-            , [FromServices] IChangeProductQuantityService changeProductQuantityService)
+        public async Task<IActionResult> changeQuantity(UpdateProductRequestDto requestDto
+            , [FromServices] IUpdateProductService changeProductQuantityService)
         => await presenter.Handle(requestDto, changeProductQuantityService);
 
     }

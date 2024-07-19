@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BasicShop.Core.ServiceInterfaces.ProductInterfaces
 {
-    public interface IChangeProductQuantityService:IGenericService<ChangeProductQuantityRequestDto,ResponseModel<ProductResponseDto>>
+    public interface IUpdateProductService:IGenericService<UpdateProductRequestDto,ResponseModel<ProductResponseDto>>
     {
     }
 }
