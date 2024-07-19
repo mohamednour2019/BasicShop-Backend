@@ -101,7 +101,7 @@ namespace BasicShop.Application.Services.CartServices
             }catch(Exception ex)
             {
                 await _unitOfWork.RollbackTransaction();
-                throw new Exception(ex.Message);
+                throw new ViolenceConstraintException("Quantity in Stock not enough!");
             }
             await _unitOfWork.CommitTransaciton();
 

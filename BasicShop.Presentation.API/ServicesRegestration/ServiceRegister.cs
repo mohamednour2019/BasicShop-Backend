@@ -81,6 +81,7 @@ namespace BasicShop.Presentation.API.ServicesRegestration
             services.AddScoped<IUserRepository,UserRepository>();
             services.AddScoped<IDeleteCartProductService, DeleteCartProductService>();
             services.AddScoped<IProductRepository,ProductRepository>();
+            services.AddScoped<IGetCartProductsService,GetCartProductsService>();
             services.AddScoped<IChangeProductCartQuantityService, ChangeProductCartQuantityService>();
             return services;
         }

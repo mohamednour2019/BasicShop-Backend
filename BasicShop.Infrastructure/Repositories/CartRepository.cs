@@ -25,5 +25,13 @@ namespace BasicShop.Infrastructure.Repositories
                 .Include(x => x.Product)
                 .FirstOrDefaultAsync(x => x.CartId == CartId && x.ProductId == ProductId);
         }
+
+        public async Task<List<CartProduct>> GetCartProducts(Guid CartId)
+        {
+            return await _entity.Include(x=>x.Product)
+                .Include(x=>x.Cart)
+                .Where(x=>x.CartId==CartId)
+                .ToListAsync();
+        }
     }
 }

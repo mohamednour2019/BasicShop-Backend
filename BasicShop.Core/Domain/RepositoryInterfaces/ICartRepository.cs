@@ -10,5 +10,6 @@ namespace BasicShop.Core.Domain.RepositoryInterfaces
     public interface ICartRepository
     {
         Task<CartProduct> GetCartProduct(Guid CartId, Guid ProductId);
+        Task<List<CartProduct>> GetCartProducts(Guid CartId);
     }
 }

@@ -1,6 +1,5 @@
 ﻿using BasicShop.Core.Domain.Entities;
-using BasicShop.Core.DTO_S.Cart.RequestDTOs;
-using BasicShop.Core.DTO_S.Product.ResponseDTOs;
+using BasicShop.Core.DTO_S.Cart.ResponseDTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,8 +8,7 @@ using System.Threading.Tasks;
 
 namespace BasicShop.Core.ServiceInterfaces.CartInterfaces
 {
-    public interface IDeleteCartProductService:IGenericService<DeleteCartProductRequestDto,ResponseModel<ProductResponseDto>>
+    public interface IGetCartProductsService:IGenericService<Guid,ResponseModel<List<ProductCartResponsDto>>>
     {
-
     }
 }

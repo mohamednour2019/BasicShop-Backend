@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BasicShop.Presentation.API.Controllers
 {
-    public class CartController:BaseController
+    public class CartController : BaseController
     {
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ResponseModel<ProductCartResponsDto>))]
@@ -27,10 +27,18 @@ namespace BasicShop.Presentation.API.Controllers
 
 
         [HttpDelete]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ResponseModel<ProductCartResponsDto>))]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ResponseModel<ProductResponseDto>))]
         public async Task<IActionResult> deleteProduct(DeleteCartProductRequestDto requestDTO
         , [FromServices] IDeleteCartProductService addProductToCartService)
         => await presenter.Handle(requestDTO, addProductToCartService);
+
+
+
+        [HttpGet("{cartId}")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ResponseModel<List<ProductCartResponsDto>>))]
+        public async Task<IActionResult> getProducts(Guid cartId
+        , [FromServices] IGetCartProductsService getCartProductsService)
+        => await presenter.Handle(cartId, getCartProductsService);
 
     }
 }

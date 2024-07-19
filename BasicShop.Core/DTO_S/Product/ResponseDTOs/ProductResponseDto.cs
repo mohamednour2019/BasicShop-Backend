@@ -13,5 +13,7 @@ namespace BasicShop.Core.DTO_S.Product.ResponseDTOs
         public decimal Price { get; set; }
         public bool IsActive { get; set; }
         public int QuantityInStock { get; set; }
+
+        public decimal?CartTotalAmout {  get; set; }
     }
 }

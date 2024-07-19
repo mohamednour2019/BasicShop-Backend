@@ -61,6 +61,7 @@ namespace BasicShop.Infrastructure.Mapper
             .ForMember(dest => dest.ProductName, opt => opt.MapFrom(src => src.Product.Name))
             .ForMember(dest => dest.Quantity, opt => opt.MapFrom(src => src.Quantity))
             .ForMember(dest => dest.UnitPrice, opt => opt.MapFrom(src => src.UnitPrice))
+            .ForMember(dest => dest.CartTotalPrice, opt => opt.MapFrom(src => src.Cart.TotalPrice))
             .ForMember(dest => dest.ProductPrice, opt => opt.MapFrom(src => src.Product.Price));
 
         }
