@@ -29,7 +29,7 @@ namespace BasicShop.Application.Services.UserServices
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<ResponseModel<RegisterResponseDto>> perform(RegisterRequestDto requestDto)
+        public async Task<ResponseModel<UserResponseDto>> perform(RegisterRequestDto requestDto)
         {
             User user=_mapper.Map<User>(requestDto);
             user.Id = Guid.NewGuid();
@@ -60,9 +60,7 @@ namespace BasicShop.Application.Services.UserServices
                     Email = requestDto.Email,
                     Password = requestDto.Password
                 };
-                var signInResult = await _signInService.perform(signInRequestDto);
-                RegisterResponseDto respons = _mapper.Map<RegisterResponseDto>(signInResult.Data);
-                return new ResponseModel<RegisterResponseDto>(respons,"Welcome", true);
+                return await _signInService.perform(signInRequestDto);
             }
 
 

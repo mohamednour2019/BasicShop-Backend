@@ -39,7 +39,7 @@ namespace BasicShop.Application.Services.CartServices
 
         public async Task<ResponseModel<ProductCartResponsDto>> perform(AddProductToCartRequestDto? requestDto)
         {
-            Cart cart=await _cartRepository.GetByConditionAsync(x=>x.UserId==requestDto.UserId);
+            Cart cart=await _cartRepository.GetByIdAsync(requestDto.CartId);
             Product product = await _productRepository.GetByIdAsync(requestDto.ProductId);
             if (product.QuantityInStock < 1)
             {

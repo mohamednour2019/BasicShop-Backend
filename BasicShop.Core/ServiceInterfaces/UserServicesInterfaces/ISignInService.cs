@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BasicShop.Core.ServiceInterfaces.UserServicesInterfaces
 {
-    public interface ISignInService:IGenericService<SignInRequestDto,ResponseModel<SignInResponseDto>>
+    public interface ISignInService:IGenericService<SignInRequestDto,ResponseModel<UserResponseDto>>
     {
     }
 }

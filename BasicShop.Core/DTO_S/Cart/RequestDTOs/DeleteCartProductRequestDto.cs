@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace BasicShop.Core.DTO_S.Cart.RequestDTOs
 {
-    public class AddProductToCartRequestDto
+    public class DeleteCartProductRequestDto
     {
-        public Guid CartId {  get; set; }
+        public Guid CartId { get; set; }
         public Guid ProductId { get; set; }
     }
 }

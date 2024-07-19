@@ -10,14 +10,14 @@ namespace BasicShop.Presentation.API.Controllers
     public class UserController:BaseController
     {
         [HttpPost("register")]
-        [ProducesResponseType(StatusCodes.Status200OK,Type =typeof(ResponseModel<RegisterResponseDto>))]
+        [ProducesResponseType(StatusCodes.Status200OK,Type =typeof(ResponseModel<UserResponseDto>))]
         public async Task<IActionResult> Register(RegisterRequestDto requestDTO
             , [FromServices]IRegisterService registereServices)
             =>await presenter.Handle(requestDTO, registereServices);
 
 
         [HttpPost("login")]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ResponseModel<SignInResponseDto>))]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ResponseModel<UserResponseDto>))]
         public async Task<IActionResult> Login(SignInRequestDto requestDTO
         , [FromServices] ISignInService signInService)
         => await presenter.Handle(requestDTO, signInService);
