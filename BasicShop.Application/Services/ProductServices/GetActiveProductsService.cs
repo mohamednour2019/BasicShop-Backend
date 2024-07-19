@@ -14,17 +14,17 @@ namespace BasicShop.Application.Services.ProductServices
     public class GetActiveProductsService : IGetActiveProductsService
     {
         private IMapper _mapper;
-        private IGenericRepository<Product> _repository;
+        private IProductRepository _repository;
 
-        public GetActiveProductsService(IMapper mapper, IGenericRepository<Product> repository)
+        public GetActiveProductsService(IMapper mapper, IProductRepository repository)
         {
             _mapper = mapper;
             _repository = repository;
         }
 
-        public async Task<ResponseModel<List<ProductResponseDto>>> perform(object? requestDto)
+        public async Task<ResponseModel<List<ProductResponseDto>>> perform(Guid requestDto)
         {
-            List<Product>result= await _repository.GetAllWithConditionAsync(x => x.IsActive == true);
+            List<Product>result= await _repository.GetActiveProducts(requestDto);
             if(result is not null && result.Count > 0)
             {
                 var response = _mapper.Map<List<ProductResponseDto>>(result);

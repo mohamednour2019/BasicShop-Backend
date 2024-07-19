@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BasicShop.Core.ServiceInterfaces.ProductInterfaces
 {
-    public interface IGetActiveProductsService : IGenericService<object,ResponseModel<List<ProductResponseDto>>>
+    public interface IGetActiveProductsService : IGenericService<Guid,ResponseModel<List<ProductResponseDto>>>
     {
     }
 }

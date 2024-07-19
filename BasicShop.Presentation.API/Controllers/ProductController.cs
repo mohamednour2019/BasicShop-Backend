@@ -25,10 +25,10 @@ namespace BasicShop.Presentation.API.Controllers
             , [FromServices] IDeleteProductService deleteProductService)
         => await presenter.Handle(productId, deleteProductService);
 
-        [HttpGet("active")]
+        [HttpGet("active/{cartId}")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ResponseModel<List<ProductResponseDto>>))]
-        public async Task<IActionResult> getActive([FromServices] IGetActiveProductsService getActiveProductsService)
-        => await presenter.Handle(null, getActiveProductsService);
+        public async Task<IActionResult> getActive(Guid cartId,[FromServices] IGetActiveProductsService getActiveProductsService)
+        => await presenter.Handle(cartId, getActiveProductsService);
 
 
 
