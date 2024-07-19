@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BasicShop.Core.ServiceInterfaces.UserServicesInterfaces
 {
-    public interface IRegisterService:IGenericService<RegisterRequestDto,ResponseModel<RegisterResponseDto>
+    public interface IRegisterService:IGenericService<RegisterRequestDto,ResponseModel<RegisterResponseDto>>
     {
     }
 }
