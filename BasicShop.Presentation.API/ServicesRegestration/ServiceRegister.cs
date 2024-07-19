@@ -12,6 +12,8 @@ using BasicShop.Core.Domain.RepositoryInterfaces;
 using BasicShop.Infrastructure.Repositories;
 using BasicShop.Core.ServiceInterfaces.ProductInterfaces;
 using BasicShop.Application.Services.ProductServices;
+using BasicShop.Core.ServiceInterfaces.CartInterfaces;
+using BasicShop.Application.Services.CartServices;
 
 namespace BasicShop.Presentation.API.ServicesRegestration
 {
@@ -74,6 +76,8 @@ namespace BasicShop.Presentation.API.ServicesRegestration
             services.AddScoped<IGetProductsService, GetProductsService>();
             services.AddScoped<IToggleProductStatusService, ToggleProductStatusService>();
             services.AddScoped<IChangeProductQuantityService, ChangeProductQuantityService>();
+            services.AddScoped<IAddProductToCartService,AddProductToCartService>();
+            services.AddScoped<IChangeProductCartQuantityService, ChangeProductCartQuantityService>();
             return services;
         }
 

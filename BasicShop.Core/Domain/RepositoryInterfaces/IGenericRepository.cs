@@ -12,6 +12,10 @@ namespace BasicShop.Core.Domain.RepositoryInterfaces
         Task<List<T>> GetAllAsync();
         Task<List<T>> GetAllWithConditionAsync(Expression<Func<T, bool>> predicate);
         Task<T> GetByIdAsync(Guid id);
+
+        Task<T> GetByCompositKeyAsync(params object[] keyValues);
+
+        Task<T> GetByConditionAsync(Expression<Func<T, bool>> predicate);
         Task AddAsync(T entity);
 
         Task<bool> IsResident(Expression<Func<T, bool>> predicate);

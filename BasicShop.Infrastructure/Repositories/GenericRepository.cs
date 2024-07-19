@@ -40,6 +40,16 @@ namespace BasicShop.Infrastructure.Repositories
            return await _entity.Where(predicate).ToListAsync();
         }
 
+        public async Task<T> GetByCompositKeyAsync(params object[] keyValues)
+        {
+           return await _entity.FindAsync(keyValues);
+        }
+
+        public async Task<T> GetByConditionAsync(Expression<Func<T, bool>> predicate)
+        {
+            return await _entity.FirstOrDefaultAsync(predicate);
+        }
+
         public async Task<T> GetByIdAsync(Guid id)
         {
             return await _entity.FindAsync(id);
