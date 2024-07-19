@@ -12,6 +12,7 @@ namespace BasicShop.Core.Domain.Entities
         public string Name { get; set; }
         public decimal Price { get; set; }  
         public bool IsActive { get; set; }
+        public int QuantityInStock {  get; set; }
         public CartProduct CartProduct { get; set; }
     }
 }

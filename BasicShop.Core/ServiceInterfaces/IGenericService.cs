@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BasicShop.Core.ServiceInterfaces
 {
-    public interface IGenericService<TRequestDto, TResponseDto>where TRequestDto:class where TResponseDto:class
+    public interface IGenericService<TRequestDto, TResponseDto>
     {
         public Task<TResponseDto>perform(TRequestDto requestDto);
     }
