@@ -15,6 +15,9 @@ namespace BasicShop.Core.Domain.Entities
 
         [Required(ErrorMessage = "You Have to Provide Last Name")]
         public string LastName { get; set; }
+        public string Role {  get; set; }
         public Cart Cart { get; set; }
+
+
     }
 }

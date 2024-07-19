@@ -25,13 +25,13 @@ namespace BasicShop.Infrastructure.ApplicationDbContext
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
-            builder.Entity<UserRole>().ToTable("UserRole");
             builder.ApplyConfigurationsFromAssembly(typeof(AppDbContext).Assembly);
             builder.Ignore<IdentityUserClaim<Guid>>();
             builder.Ignore<IdentityUserLogin<Guid>>();
             builder.Ignore<IdentityUserToken<Guid>>();
             builder.Ignore<IdentityRoleClaim<Guid>>();
             builder.Ignore<IdentityUserRole<Guid>>();
+            builder.Ignore<UserRole>();
         }
     }
 }

@@ -7,7 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\BasicShop.Core\BasicShop.Core.csproj" />
+    <ProjectReference Include="..\BasicShop.Shared\BasicShop.Shared.csproj" />
   </ItemGroup>
 
 </Project>

@@ -7,6 +7,7 @@ using System.Data;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
 using BasicShop.Infrastructure.ApplicationDbContext;
+using BasicShop.Infrastructure.Mapper;
 
 namespace BasicShop.Presentation.API.ServicesRegestration
 {
@@ -26,6 +27,9 @@ namespace BasicShop.Presentation.API.ServicesRegestration
             .AddEntityFrameworkStores<AppDbContext>()
             .AddUserStore<UserStore<User, UserRole, AppDbContext, Guid>>()
             .AddRoleStore<RoleStore<UserRole, AppDbContext, Guid>>();
+
+            //Mapper
+            services.AddAutoMapper(typeof(Mapper));
 
             services.AddScoped<IAppConfigurationService, AppConfigurationService>();
             return services;
