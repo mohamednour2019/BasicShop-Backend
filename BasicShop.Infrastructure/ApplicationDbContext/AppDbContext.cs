@@ -26,12 +26,13 @@ namespace BasicShop.Infrastructure.ApplicationDbContext
         {
             base.OnModelCreating(builder);
             builder.ApplyConfigurationsFromAssembly(typeof(AppDbContext).Assembly);
-            builder.Ignore<IdentityUserClaim<Guid>>();
-            builder.Ignore<IdentityUserLogin<Guid>>();
-            builder.Ignore<IdentityUserToken<Guid>>();
-            builder.Ignore<IdentityRoleClaim<Guid>>();
-            builder.Ignore<IdentityUserRole<Guid>>();
-            builder.Ignore<UserRole>();
+            // If you don't need roles, you can remove them from the model
+            builder.Entity<IdentityRole<Guid>>().ToTable("Roles").HasKey(r => r.Id);
+            builder.Entity<IdentityUserRole<Guid>>().ToTable("UserRoles");
+            builder.Entity<IdentityRoleClaim<Guid>>().ToTable("RoleClaims");
+            builder.Entity<IdentityUserClaim<Guid>>().ToTable("UserClaims");
+            builder.Entity<IdentityUserLogin<Guid>>().ToTable("UserLogins");
+            builder.Entity<IdentityUserToken<Guid>>().ToTable("UserTokens");
         }
     }
 }

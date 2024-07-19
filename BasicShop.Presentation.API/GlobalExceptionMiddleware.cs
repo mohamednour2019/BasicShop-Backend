@@ -1,6 +1,12 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using Azure;
+using BasicShop.Core.Domain.Entities;
+using BasicShop.Shared.CustomExceptions;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
+using System.Net;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace BasicShop.Presentation.API
@@ -23,8 +29,25 @@ namespace BasicShop.Presentation.API
             }
             catch(Exception ex)
             {
-                httpContext.Response.StatusCode = 400;
-                await httpContext.Response.WriteAsync(ex.ToString());
+                string message=ex.Message;
+                httpContext.Response.ContentType = "application/json";
+                if (ex is ViolenceConstraintException || ex is NotFoundException)
+                {
+                    httpContext.Response.StatusCode = (int)HttpStatusCode.BadRequest;
+                    message = ex.Message;
+                }
+                else if (ex is SecurityTokenExpiredException)
+                {
+                    httpContext.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
+                }
+                else
+                {
+                    httpContext.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+                    message = "Sorry, Something Went Wrong Please Try Again Later.";
+                }
+                var response = new ResponseModel<object>(null, message, false);
+                string responseBody = JsonSerializer.Serialize(response);
+                await httpContext.Response.WriteAsync(responseBody);
             }
 
 

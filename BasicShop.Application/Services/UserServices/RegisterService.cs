@@ -17,12 +17,13 @@ namespace BasicShop.Application.Services.UserServices
         private ISignInService _signInService;  
 
 
-        public RegisterService(UserManager<User> _userManager,IMapper mapper
+        public RegisterService(UserManager<User> userManager,IMapper mapper
             , SignInManager<User>signInManager,ISignInService signInService)
         {
             _mapper=mapper;
             _signInManager=signInManager;
             _signInService=signInService;
+            _userManager = userManager;
         }
 
         public async Task<ResponseModel<RegisterResponseDto>> perform(RegisterRequestDto requestDto)
@@ -45,7 +46,7 @@ namespace BasicShop.Application.Services.UserServices
                 };
                 var signInResult = await _signInService.perform(signInRequestDto);
                 RegisterResponseDto respons = _mapper.Map<RegisterResponseDto>(signInResult.Data);
-                return new ResponseModel<RegisterResponseDto>(respons,"Welcom", true);
+                return new ResponseModel<RegisterResponseDto>(respons,"Welcome", true);
             }
 
 

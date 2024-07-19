@@ -20,7 +20,8 @@ namespace BasicShop.Infrastructure.SeedData
                     LastName = "admin",
                     Email = "admin@gmail.com",
                     UserName="admin@gmail.com",
-                    Role="Admin"
+                    Role="Admin",
+                    SecurityStamp=Guid.NewGuid().ToString()
                 }
             };
         }

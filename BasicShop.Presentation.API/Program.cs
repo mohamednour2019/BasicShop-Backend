@@ -1,17 +1,20 @@
+using BasicShop.Core.Domain.Entities;
+using BasicShop.Infrastructure.SeedData;
 using BasicShop.Presentation.API;
 using BasicShop.Presentation.API.ServicesRegestration;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.RegisterServices(builder.Configuration);
 var app = builder.Build();
-//using (var scope = app.Services.CreateScope())
-//{
-//    var services = scope.ServiceProvider;
-//    var userManager = services.GetRequiredService<UserManager<User>>();
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    var userManager = services.GetRequiredService<UserManager<User>>();
 
-//    // Call the seed method
-//    await SeedAdminData.Initialize(userManager);
-//}
+    // Call the seed method
+    await SeedAdminData.Initialize(userManager);
+}
 app.UseGlobalExceptionMiddleware();
 app.UseHsts();
 app.UseHttpsRedirection();

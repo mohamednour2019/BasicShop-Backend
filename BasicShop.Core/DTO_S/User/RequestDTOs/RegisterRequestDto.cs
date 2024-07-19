@@ -27,7 +27,7 @@ namespace BasicShop.Core.DTO_S.User.RequestDTOs
         [Required(ErrorMessage = "Password is Required")]
         [MinLength(8,ErrorMessage ="Password Shouldn't be less than 8 Charachters")]
         public string Password { get; set; }
-        public string PhoneNumber {  get; set; }
+        public string? PhoneNumber {  get; set; }
 
     }
 }

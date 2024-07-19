@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BasicShop.Core.Domain.Entities
 {
-    public class ResponseModel<TResponseDto> where TResponseDto : class
+    public class ResponseModel<TResponseDto>
     {
         public ResponseModel(TResponseDto responseDto,string message,bool success) {
             Data = responseDto;

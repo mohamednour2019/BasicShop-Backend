@@ -18,7 +18,6 @@ namespace BasicShop.Infrastructure.EntitiesConfigurations
         {
             builder.ToTable("Users");
             builder.HasKey(x => x.Id);
-            builder.Ignore(x => x.SecurityStamp);
             builder.Ignore(x => x.ConcurrencyStamp);
             builder.Ignore(x => x.TwoFactorEnabled);
             builder.Ignore(x => x.LockoutEnd);

@@ -5,6 +5,11 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using BasicShop.Infrastructure.ApplicationDbContext;
 using BasicShop.Infrastructure.Mapper;
 using Asp.Versioning;
+using Microsoft.EntityFrameworkCore.Internal;
+using BasicShop.Core.ServiceInterfaces.UserServicesInterfaces;
+using BasicShop.Application.Services.UserServices;
+using BasicShop.Core.Domain.RepositoryInterfaces;
+using BasicShop.Infrastructure.Repositories;
 
 namespace BasicShop.Presentation.API.ServicesRegestration
 {
@@ -57,7 +62,13 @@ namespace BasicShop.Presentation.API.ServicesRegestration
 
 
             services.AddScoped<IAppConfigurationService, AppConfigurationService>();
+            services.AddScoped<IRegisterService, RegisterService>();
+            services.AddScoped<ISignInService, SignInService>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             return services;
         }
+
+
     }
 }
